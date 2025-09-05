@@ -1,12 +1,34 @@
 import { useState } from 'react'
- 
+ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+ import Home from './Pages/Home';
+ import Navbar from './Components/Navbar';
+ import Signup from './Pages/SignUp';
+ import TurfDetails from './Pages/TurfDetails';
+  import BookingForm from './Pages/BookingForm';
+  import MyBookings from './Pages/MyBookings';
+  import Dashboard from './Pages/Dashboard';
+
+
  
 function App() {
-  const [count, setCount] = useState(0)
+   
 
   return (
     <>
-      <h1 className='text-4xl'>Footem</h1>
+      <div className="App">
+        <Router>
+          <Navbar/>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/Details" element={<TurfDetails/>}/>
+            <Route path="/bookingform" element={<BookingForm/>}/>
+            <Route path="/mybookings" element={<MyBookings/>}/>
+            <Route path="/Dashboard" element={<Dashboard/>}/>
+    
+          </Routes> 
+        </Router>
+        </div>
     </>
   )
 }
