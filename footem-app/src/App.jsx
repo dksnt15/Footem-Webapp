@@ -7,7 +7,7 @@ import { useState } from 'react'
   import BookingForm from './Pages/BookingForm';
   import MyBookings from './Pages/MyBookings';
   import Dashboard from './Pages/Dashboard';
-
+  import Turf from './Pages/Turfs';
 
  
 function App() {
@@ -25,6 +25,7 @@ function App() {
             <Route path="/bookingform" element={<BookingForm/>}/>
             <Route path="/mybookings" element={<MyBookings/>}/>
             <Route path="/Dashboard" element={<Dashboard/>}/>
+            <Route path="/Turfs" element={<Turf/>}/>
     
           </Routes> 
         </Router>
