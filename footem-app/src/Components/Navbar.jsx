@@ -6,11 +6,11 @@ const Navbar = () => {
       <nav className="absolute top-0 left-0 w-full z-50 ">
         <div className="flex sm:justify-between justify-center ">
           <div>
-            <h1 className="  text-xl">Logo</h1>
+            <h1 className=" sm:mx-[2vmax] my-[1vmax] text-xl">Logo</h1>
           </div>
-          <div className="flex  justify-end p-[2vmax] gap-[4vw]  mx-[2vw] my-1">
+          <div className="flex  justify-end  md:px-[2vmax]  py-[2vmax] gap-[4vw]  mx-[2vw] my-1">
 
-            <ul className="flex text-white text-[2vmax]  lg:text-2xl font-semibold space-x-[4vw] lg:space-x-[3vmax]">
+            <ul className="flex justify-content items-center text-white text-[2vmax]  lg:text-2xl font-semibold space-x-[4vw] lg:space-x-[3vmax]">
               <li>
                 <Link to="/">Home</Link>
               </li>
