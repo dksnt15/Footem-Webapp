@@ -8,20 +8,20 @@ const Navbar = () => {
           <div>
             <h1 className=" sm:mx-[2vmax] my-[1vmax] text-xl">Logo</h1>
           </div>
-          <div className="flex  justify-end  md:px-[2vmax]  py-[2vmax] gap-[4vw]  mx-[2vw] my-1">
+          <div className="flex  justify-end  md:px-[2vmax]  py-[1.5vmax] gap-[1vw]  mx-[2vw] my-1">
 
-            <ul className="flex justify-content items-center text-white text-[2vmax]  lg:text-2xl font-semibold space-x-[4vw] lg:space-x-[3vmax]">
-              <li>
+            <ul className=" flex justify-content items-center text-white text-[2vmax]  lg:text-2xl font-semibold rounded-full px-[1vmax] space-x-[4vw] lg:space-x-[0.5vmax]">
+              <li className=" hover:bg-black/5 hover:backdrop-blur-sm md:px-[1vmax] py-[0.1vmax] rounded-full transition duration-300">
                 <Link to="/">Home</Link>
               </li>
-              <li>
+              <li className="hover:bg-black/5 hover:backdrop-blur-sm md:px-[1vmax] py-[0.1vmax] rounded-full transition duration-300">
                 <Link to="/mybookings">MyBookings</Link>
               </li>
-              <li>
+              <li className="hover:bg-black/5 hover:backdrop-blur-sm md:px-[1vmax] py-[0.1vmax] rounded-full transition duration-300">
                 <Link to="/Turfs">Turfs</Link>
               </li>
             </ul>
-            <div className="bg-gray-300 lg:text-[1vmax] font-semibold text-green-700 px-4 py-1 rounded-full cursor-pointer">
+            <div className="bg-gray-300  text-[0.8em] lg:text-[1vmax] font-semibold text-green-700 px-4 py-1 rounded-full cursor-pointer">
               <Link to="/signup">SignUp</Link>
             </div>
           </div>
