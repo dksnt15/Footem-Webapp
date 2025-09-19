@@ -9,11 +9,11 @@ const Card = () => {
         </div>
         <div className=" p-[1.5vmax] flex justify-center gap-[5vmax] w-full">
           <div className="w-1/2">
-            <h2 className=" text-lg">Name</h2>
-            <p className="text-sm text-gray-500">Card Description</p>
+            <h2 className="text-[1rem] font-semibold">Name</h2>
+            <p className="text-[0.875rem] ">Card Description</p>
           </div>
 
-          <h1 className="w-1/2 text-center text-xl">Rs 1500</h1>
+          <h1 className="w-1/2 text-bold text-center text-[1.125rem]">Rs 1500</h1>
         </div>
       </div>
     </div>
