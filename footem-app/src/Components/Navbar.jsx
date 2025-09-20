@@ -12,12 +12,12 @@ const Navbar = () => {
             <h1 className=" sm:mx-[2vmax] my-[1vmax] text-xl">Footurf</h1>
           </div>
 
-          <div className="flex w-full justify-end md:px-[2vmax] py-[1.5vmax] gap-[1vw]  mx-[2vw] my-1">
-             <div className="flex justify-end w-full gap-[0.5rem] items-center ">
-              <form className=" w-full bg-white hidden sm:flex  rounded-full ">
-                <input type="text" placeholder="Search" className="" />
+          <div className="flex w-full justify-end  md:px-[2vmax] py-[1.5vmax] gap-[1vw]  mx-[2vw] my-1">
+             <div className="bg-gradient-to-r from-[#ffffff] to-[#D4DFED] hidden sm:flex rounded-full justify-end w-1/2 gap-[0.5rem] items-center p-[0.1em] shadow-2xl">
+              <form className=" w-full rounded-full focus:ring-0 ">
+                <input type="text" placeholder="Search" className="w-full h-[1.7em] p-[1em] focus:outline-none " />
               </form>
-              <button className="text-white">
+              <button className="bg-green-500 rounded-full w-[45px] h-[40px] flex justify-center items-center">
                 <Search />
               </button>
             </div>
