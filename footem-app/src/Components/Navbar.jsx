@@ -56,14 +56,14 @@ const Navbar = () => {
 
            
 
-            <div className=" border-1 text-[0.8em] lg:text-[1vmax] font-semibold text-white hover:text-green-500 px-4 py-1 rounded-full cursor-pointer">
+            <div className="flex items-center border-1 text-[0.8em] lg:text-[1vmax] font-semibold text-white hover:text-green-500 px-4 py-1 rounded-full cursor-pointer">
               <Link to="/signup">SignUp</Link>
             </div>
             <button
               className=" sm:hidden text-white z-50 "
               onClick={() => setOpen(!open)}
             >
-              {open ? <X size={28} /> : <Menu size={28} />}
+              {open ? <X size={28} /> : <Menu className=' ' size={28} />}
             </button>
           </div>
         </div>
