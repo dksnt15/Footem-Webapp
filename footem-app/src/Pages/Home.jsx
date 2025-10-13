@@ -18,8 +18,8 @@ const Home = () => {
           className="w-full lg:w-[60%] px-[8vmax] lg:px-0 py-[8vmax] h-full flex flex-col justify-center items-center text-white leading-none drop-shadow-2xl"
           style={{ fontFamily: "Racing Sans One" }}
         >
-          <h1 className="flex gap-[2vmax] text-[12vmax] md:text-[120px] sm:leading-[12vmin]">
-            YOUR <h1 className="text-[#1c4b41]">FIELD</h1>
+          <h1 className=" text-[12vmax] md:text-[120px] sm:leading-[12vmin]">
+            YOUR <span className="text-[#1c4b41]">FIELD</span>
           </h1>
           <h2 className=" pl-[8vmax] text-[12vmax] md:text-[120px] sm:leading-[12vmin]">
             YOUR GAME
@@ -40,49 +40,84 @@ const Home = () => {
           <Card />
         </div>
       </div>
-
-      <div className="bg-[#1c4b41] w-full md:h-[400px] rounded-2xl shadow-inner p-[1vmax] overflow-hidden ">
-       <h1
-            className="text-white font-semibold text-4xl p-[1.5vmax]"
+      <div className="w-full flex justify-center">
+        <div className="bg-[#1c4b41] w-[98%] h-full md:h-[400px] rounded-2xl shadow-2xl p-[1vmax] overflow-hidden ">
+          <h1
+            className="text-white font-semibold sm:text-4xl p-[0.5vmax]"
             style={{ fontFamily: "Poppins" }}
           >
             Quick Booking
           </h1>
-        <div className="w-full h-full p-[1vmax] flex gap-[5vmax]  ">
-          
-          <div className="bg-gray-100 m-[1vmax] rounded-2xl w-full md:w-1/2 md:h-[70%] shadow-lg">
-            <form
-              action=""
-              className="w-full h-full p-[2vmax] flex flex-col space-y-4 "
-            >
-              <input
-                type="text"
-                className="w-full shadow-lg rounded-xl h-[30px] p-[20px] focus:outline-none "
-                placeholder="Enter Location"
-              />
-              <input
-                type="text"
-                className="w-1/2 h-[30px] shadow-lg rounded-xl p-[20px] focus:outline-none "
-                placeholder="Enter Date"
-              />
-              <button
-                type="submit"
-                className="cursor-pointer bg-green-700 shadow-2xl text-white p-[1vmax] rounded-lg hover:scale-105 transform transition-all duration-300 ease-in-out"
+          <div className="w-full h-full p-[0.5vmax] flex gap-[5vmax]  ">
+            <div className="bg-gray-100 m-[1vmax] rounded-2xl w-full md:w-1/2 md:h-[70%] shadow-lg">
+              <form
+                action=""
+                className="w-full h-full p-[2vmax] flex flex-col space-y-4 "
               >
-                Check Availability
-              </button>
-            </form>
-          </div>
-          <div className="hidden md:block md:w-1/3 h-[80%] rounded-2xl shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer overflow-hidden">
-            <div className="w-full h-[70%] bg-gray-300 shadow-inner">
-
+                <input
+                  type="text"
+                  className="w-full shadow-lg rounded-xl h-[30px] p-[20px] focus:outline-none "
+                  placeholder="Enter Location"
+                />
+                <input
+                  type="text"
+                  className="w-1/2 h-[30px] shadow-lg rounded-xl p-[20px] focus:outline-none "
+                  placeholder="Enter Date"
+                />
+                <button
+                  type="submit"
+                  className="cursor-pointer bg-green-700 shadow-2xl text-white p-[1vmax] rounded-lg hover:scale-105 transform transition-all duration-300 ease-in-out"
+                >
+                  Check Availability
+                </button>
+              </form>
             </div>
-            <div className="w-full h-[30%] bg-gray-100 flex justify-center items-center">
-             <h2 className="text-xl">Discover </h2>
+
+            <div className="hidden md:block md:w-1/3 h-[80%] rounded-2xl shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer overflow-hidden">
+              <div className="w-full h-[70%] bg-gray-300 shadow-inner"></div>
+              <div className="w-full h-[30%] bg-gray-100 flex justify-center items-center">
+                <h2 className="text-xl">Discover </h2>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div className="w-full h-[40vh] flex flex-wrap">
+        <div className="w-1/2 h-full bg-[#B2E912]">
+          <h1 className="text-[2vmax] font-semibold">Download Our App</h1>
+        </div>
+
+        <div className="w-1/2 h-full flex justify-center items-center">
+          <div className="h-[90%] w-[80%] rounded-2xl p-[1vmax] bg-[#282828] flex gap-[1vmax] ">
+            <img
+              src={HeroImg}
+              alt="Hero"
+              className="h-full w-1/2 object-cover rounded-2xl"
+            />
+
+            <div className=" w-full p-[1vmax] text-white space-y-[1vmax]">
+              <div className="w-full flex gap-[0.5vmax] items-center ">
+                <img
+                  className="rounded-full w-[50px] h-[50px] border-1"
+                  src=""
+                  alt="Comment"
+                />
+                <h2>Name</h2>
+              </div>
+
+              <p className="w-full border-2 border-gray-500 rounded-xl whitespace-pre-wrap break-words overflow-hidden leading-relaxed">
+                comments
+                als;djf;asjdf;la
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer className="bg-white w-full h-[30vmax] flex justify-center ">
+        info
+      </footer>
     </div>
   );
 };
