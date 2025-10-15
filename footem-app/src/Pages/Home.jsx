@@ -3,8 +3,8 @@ import HeroVid from "../assets/HeroVid.mp4";
 import Card from "../Components/Card";
 const Home = () => {
   return (
-    <div className="h-screen w-screen">
-      <div className="relative h-[96%] w-full bg-center bg-cover bg-no-repeat">
+    <div className="min-h-screen w-screen bg-gradient-to-r from-[#ffffff] to-[#D4DFED]">
+      <div className="relative h-[99vh] w-full bg-center bg-cover bg-no-repeat">
         <video
           autoPlay
           muted
@@ -26,22 +26,9 @@ const Home = () => {
           </h2>
         </div>
       </div>
-      <div className="bg-gradient-to-r from-[#ffffff] to-[#D4DFED]  ">
-        <h1
-          className="font-semibold text-4xl pt-[1vmax] pl-[2vmax]"
-          style={{ fontFamily: "Poppins" }}
-        >
-          Featured Turfs
-        </h1>
-        <div className="flex w-full overflow-x-auto    ">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
-      </div>
+      
       <div className="w-full flex justify-center">
-        <div className="bg-[#1c4b41] w-[98%] h-full md:h-[400px] rounded-2xl shadow-2xl p-[1vmax] overflow-hidden ">
+        <div className="bg-[#1c4b41] w-full -mt-3 h-full  md:h-[400px] rounded-2xl shadow-inner p-[1vmax]  overflow-hidden z-10 ">
           <h1
             className="text-white font-semibold sm:text-4xl p-[0.5vmax]"
             style={{ fontFamily: "Poppins" }}
@@ -83,20 +70,41 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-full h-[40vh] flex flex-wrap">
-        <div className="w-1/2 h-full bg-[#B2E912]">
-          <h1 className="text-[2vmax] font-semibold">Download Our App</h1>
+      <div className="my-[1vmax]  ">
+        <h1
+          className="font-semibold text-4xl pt-[1vmax] pl-[2vmax]"
+          style={{ fontFamily: "Poppins" }}
+        >
+          Featured Turfs
+        </h1>
+        <div className="flex w-full overflow-x-auto    ">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
+      </div>
+
+      <div className="w-full my-[2vmax] sm:h-[24vmax] flex sm:flex-row flex-col">
+        <div className="w-full sm:w-1/2 h-full flex justify-center items-center   ">
+          <div className="space-y-[1vmax] text-[#1c4b41]" style={{fontFamily:"Poppins"}}>
+          <h1 className="font-medium -tracking-[0.07em] text-[3vmax] ">Easy Online Booking</h1>
+          <h1 className="font-medium text-4xl -tracking-[0.07em] text-[#b4e716] ">Affordable Rates</h1>
+          <h1 className="font-medium text-[3vmax] -tracking-[0.07em] ">Verified Turfs</h1>
+          <h1 className="font-medium text-[3vmax] -tracking-[0.07em] ">Real-Time Availability</h1>
+          </div>
         </div>
 
-        <div className="w-1/2 h-full flex justify-center items-center">
-          <div className="h-[90%] w-[80%] rounded-2xl p-[1vmax] bg-[#282828] flex gap-[1vmax] ">
+        <div className=" w-full sm:w-1/2 h-full flex justify-center items-center">
+
+          <div className="h-[80%] w-[90%] sm:w-[80%] flex rounded-2xl p-[1vmax] bg-[#282828]  gap-[1vmax] ">
             <img
               src={HeroImg}
               alt="Hero"
-              className="h-full w-1/2 object-cover rounded-2xl"
+              className="h-full w-1/2 hidden sm:block object-cover rounded-2xl"
             />
 
-            <div className=" w-full p-[1vmax] text-white space-y-[1vmax]">
+            <div className=" w-full h-full p-[1vmax] text-white space-y-[1vmax]">
               <div className="w-full flex gap-[0.5vmax] items-center ">
                 <img
                   className="rounded-full w-[50px] h-[50px] border-1"
@@ -106,16 +114,16 @@ const Home = () => {
                 <h2>Name</h2>
               </div>
 
-              <p className="w-full border-2 border-gray-500 rounded-xl whitespace-pre-wrap break-words overflow-hidden leading-relaxed">
+              <p className=" w-full sm:w-[15vmax] h-[70%] rounded-xl whitespace-pre-wrap break-words overflow-hidden leading-relaxed">
                 comments
-                als;djf;asjdf;la
+                 zdfgafdgargaregasfgadfgafdgfdsgdfgfdgafgzsdgdzfgdf
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <footer className="bg-white w-full h-[30vmax] flex justify-center ">
+      <footer className=" w-full h-[30vmax] flex justify-center ">
         info
       </footer>
     </div>
