@@ -9,15 +9,15 @@ const Navbar = () => {
       <nav className="absolute top-0 left-0 w-full z-50 ">
         <div className="flex justify-between ">
           <div>
-            <h1 className=" sm:mx-[2vmax] my-[1vmax] text-xl">Footurf</h1>
+            <h1 className="text-white sm:mx-[2vmax] my-[1vmax] text-4xl" style={{ fontFamily: "BBH Sans Hegarty" }}>Footurf</h1>
           </div>
 
-          <div className="flex w-full justify-end  md:px-[2vmax] py-[1.5vmax] gap-[1vw]  mx-[2vw] my-1">
+          <div className="flex w-[1100px] justify-end  md:px-[2vmax] py-[1.5vmax] gap-[1vw]  mx-[2vw] my-1">
              <div className="bg-gradient-to-r from-[#ffffff] to-[#D4DFED] hidden sm:flex rounded-full justify-end w-1/2 gap-[0.5rem] items-center p-[0.1em] shadow-2xl">
               <form className=" w-full rounded-full focus:ring-0 ">
                 <input type="text" placeholder="Search" className="w-full h-[1.7em] p-[1em] focus:outline-none " />
               </form>
-              <button className="bg-green-500 rounded-full w-[45px] h-[40px] flex justify-center items-center">
+              <button className="bg-[#b4e716] rounded-full w-[45px] h-[40px] flex justify-center items-center">
                 <Search />
               </button>
             </div>
@@ -56,7 +56,7 @@ const Navbar = () => {
 
            
 
-            <div className="flex items-center border-1 text-[0.8em] lg:text-[1vmax] font-semibold text-white hover:text-green-500 px-4 py-1 rounded-full cursor-pointer">
+            <div className="flex items-center border-1 text-[0.8em] lg:text-[1vmax] font-semibold text-white hover:text-[#b4e716] px-4 py-1 rounded-full cursor-pointer">
               <Link to="/signup">SignUp</Link>
             </div>
             <button
