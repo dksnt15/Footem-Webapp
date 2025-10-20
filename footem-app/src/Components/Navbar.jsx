@@ -9,7 +9,7 @@ const Navbar = () => {
       <nav className="absolute top-0 left-0 w-full z-50 ">
         <div className="flex justify-between ">
           <div>
-            <h1 className=" sm:mx-[2vmax] my-[1vmax] text-xl">Footurf</h1>
+            <h1 className="text-white sm:mx-[2vmax] my-[1vmax] text-4xl" style={{ fontFamily: "BBH Sans Hegarty" }}>Footurf</h1>
           </div>
 
           <div className="flex w-full justify-end  md:px-[2vmax] py-[1.5vmax] gap-[2vw]  mx-[2vw] my-1">
@@ -57,7 +57,7 @@ const Navbar = () => {
 
            
 
-            <div className="flex items-center border-1 text-[0.8em] lg:text-[1vmax] font-semibold text-white hover:text-green-500 px-4 py-1 rounded-full cursor-pointer">
+            <div className="flex items-center border-1 text-[0.8em] lg:text-[1vmax] font-semibold text-white hover:text-[#b4e716] px-4 py-1 rounded-full cursor-pointer">
               <Link to="/signup">SignUp</Link>
             </div>
             <button
