@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import HeroImg from "../assets/Heroimg.jpg";
 import HeroVid from "../assets/HeroVid.mp4";
 import Card from "../Components/Card";
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 const Home = () => {
   const [index, setIndex] = useState(0);
   const startX = useRef(0);
@@ -201,7 +202,46 @@ const Home = () => {
 
       <div></div>
 
-      <footer className=" w-full h-[30vmax] flex justify-center ">info</footer>
+       <footer className="w-full bg-[#0a0a0a] text-gray-300 py-[3vmax] mt-[3vmax] overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between px-[3vmax] gap-10">
+          {/* Left */}
+          <div className="space-y-3">
+            <h1 className="text-2xl font-semibold text-white">Footurf</h1>
+            <p className="text-sm text-gray-400 max-w-sm">
+              Find, book, and play at the best turfs near you.  
+              Experience hassle-free booking and verified listings.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div>
+            <h2 className="text-lg font-semibold text-white mb-2">Quick Links</h2>
+            <ul className="space-y-1 text-gray-400">
+              <li className="hover:text-[#b4e716] cursor-pointer">Home</li>
+              <li className="hover:text-[#b4e716] cursor-pointer">About</li>
+              <li className="hover:text-[#b4e716] cursor-pointer">Contact</li>
+              <li className="hover:text-[#b4e716] cursor-pointer">Terms</li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h2 className="text-lg font-semibold text-white mb-2">Contact</h2>
+            <p>Email: support@footurf.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <div className="flex gap-4 mt-3">
+              <FaFacebookF className="cursor-pointer hover:text-[#b4e716]" />
+              <FaInstagram className="cursor-pointer hover:text-[#b4e716]" />
+              <FaTwitter className="cursor-pointer hover:text-[#b4e716]" />
+              <FaLinkedinIn className="cursor-pointer hover:text-[#b4e716]" />
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center text-sm text-gray-500 mt-6">
+          © {new Date().getFullYear()} Footurf. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 };
