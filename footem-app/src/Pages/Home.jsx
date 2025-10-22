@@ -4,7 +4,7 @@ import HeroImg from "../assets/Heroimg.jpg";
 
 import HeroVid from "../assets/HeroVid.mp4";
 import Card from "../Components/Card";
-import Live from "../assets/Live.mp4";
+import Live from "../assets/Live.webm";
 import img1 from "../assets/img1.jpeg";
 import img2 from "../assets/img2.jpeg";
 import {
@@ -232,28 +232,21 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="relative w-full h-[30vmax] md:h-[20vmax] flex justify-center items-center text-5xl overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          className="absolute top-1/2 left-1/2 w-full object-cover transform -translate-x-1/2 -translate-y-1/2 blur-lg -rotate-90"
-        >
-          <source src={Live} type="video/mp4" />
-        </video>
+      <div className="relative w-full h-[30vmax] md:h-[25vmax] flex justify-center items-center text-7xl overflow-hidden">
+        
 
         <video
           autoPlay
           muted
           loop
-          className="absolute top-1/2 left-1/2 w-auto object-contain transform -translate-x-1/2 -translate-y-1/2 -rotate-90"
+          className="absolute  w-full  object-cover"
           style={{
             objectFit: "contain",
             transformOrigin: "center",
             WebkitMaskImage:
-              "radial-gradient(circle at center, black 80%, transparent 95%)",
+              "radial-gradient(circle at center, black 60%, transparent 80%)",
             maskImage:
-              "radial-gradient(circle at center, black 80%, transparent 95%)",
+              "radial-gradient(circle at center, black 60%, transparent 80%)",
             WebkitMaskRepeat: "no-repeat",
             maskRepeat: "no-repeat",
             WebkitMaskSize: "100% 100%",
