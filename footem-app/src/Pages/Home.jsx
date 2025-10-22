@@ -1,9 +1,20 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeroImg from "../assets/Heroimg.jpg";
+
 import HeroVid from "../assets/HeroVid.mp4";
 import Card from "../Components/Card";
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import Live from "../assets/Live.mp4";
+import img1 from "../assets/img1.jpeg";
+import img2 from "../assets/img2.jpeg";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTwitter,
+  FaLinkedinIn,
+} from "react-icons/fa";
 const Home = () => {
+  const navigate= useNavigate();
   const [index, setIndex] = useState(0);
   const startX = useRef(0);
   const endX = useRef(0);
@@ -53,6 +64,12 @@ const Home = () => {
       author: "Neha",
     },
   ];
+  const turfs = [
+    { id: 1, name: "Green Park Turf", location: "Delhi" },
+    { id: 2, name: "City Arena", location: "Mumbai" },
+    { id: 3, name: "Goal Hub Turf", location: "Bangalore" },
+    { id: 4, name: "Soccer Zone", location: "Pune" },
+  ];
 
   return (
     <div className="min-h-screen w-screen bg-gradient-to-r from-[#ffffff] to-[#D4DFED]">
@@ -81,18 +98,21 @@ const Home = () => {
 
       <div className=" ">
         <h1
-          className="font-semibold text-4xl pt-[1vmax] pl-[2vmax]"
+          className="font-semibold text-4xl pt-[1vmax] pl-[2vmax] text-[#1c4b41]"
           style={{ fontFamily: "Poppins" }}
         >
           Featured Turfs
         </h1>
-        <div className="flex w-full h-[23em] md:h-[25em] overflow-x-auto [scrollbar-width:none]   ">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <div className="flex w-full h-[23em] md:h-[25em] overflow-x-auto [scrollbar-width:none]   ">
+           {turfs.map((turf)=>(
+            <Card 
+             key ={turf.id}
+             turf={turf}
+             onClick={()=> navigate(`/turf/${turf.id}`)}
+           />))}
+
+          </div>
         </div>
-      </div>
 
       <div className="w-full flex justify-center ">
         <div className="bg-[#1c4b41] w-full -mt-5 h-full  md:h-[400px] rounded-2xl shadow-inner p-[1vmax]  overflow-hidden z-10 ">
@@ -138,7 +158,6 @@ const Home = () => {
       </div>
 
       <div className="w-full min-h-full sm:h-[27vmax] flex sm:flex-row flex-col mt-[1vmax]">
-
         <div className="w-full sm:w-[40%] md:w-1/2 h-full flex justify-center items-center   ">
           <div
             className="p-[2vmax] sm:p-[0vmax] space-y-[2vmax] text-[#1c4b41]"
@@ -168,31 +187,44 @@ const Home = () => {
             />
 
             <div className=" md:w-1/2 h-full p-[1vmax] text-white space-y-[1vmax]">
-              <div className=" flex sm:flex-col sm:space-y-3 flex-row ">
-                <img
-                  className="rounded-full w-[50px] h-[50px] border-1"
-                  src=""
-                  alt=""
-                />
-                <div
-                  className="overflow-hidden w-full"
-                  onTouchStart={handleTouchStart}
-                  onTouchEnd={handleTouchEnd}
-                >
+              <div className="w-full h-full flex flex-col  sm:space-y-3 ">
+                <div className="w-full h-full flex sm:flex-col justify-end gap-3 sm:gap-0">
+                  <img
+                    className="rounded-full w-[50px] h-[50px] border-1 -ml-[5px]"
+                    src=""
+                    alt=""
+                  />
                   <div
-                    className="flex transition-transform duration-500 ease-in-out "
-                    style={{ transform: `translateX(-${index * 100}%)` }}
+                    className="overflow-hidden w-full"
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
                   >
-                    {comments.map((c, i) => (
-                      <div
-                        key={i}
-                        className=" min-w-full rounded-xl whitespace-pre-wrap break-words overflow-hidden leading-relaxed"
-                      >
-                        <h2 className="font-medium">{c.author}</h2>
-                        <p className="text-sm text-gray-300">{c.text}</p>
-                      </div>
-                    ))}
+                    <div
+                      className="flex transition-transform duration-500 ease-in-out "
+                      style={{ transform: `translateX(-${index * 100}%)` }}
+                    >
+                      {comments.map((c, i) => (
+                        <div
+                          key={i}
+                          className=" min-w-full rounded-xl whitespace-pre-wrap break-words overflow-hidden leading-relaxed"
+                        >
+                          <h2 className="font-medium">{c.author}</h2>
+                          <p className="text-sm text-gray-300">{c.text}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+                </div>
+
+                <div className="flex justify-center space-x-1">
+                  {comments.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        i === index ? "bg-gray-600" : "bg-gray-300"
+                      }`}
+                    ></div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -200,22 +232,69 @@ const Home = () => {
         </div>
       </div>
 
-      <div></div>
+      <div className="relative w-full h-[30vmax] md:h-[20vmax] flex justify-center items-center text-5xl overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute top-1/2 left-1/2 w-full object-cover transform -translate-x-1/2 -translate-y-1/2 blur-lg -rotate-90"
+        >
+          <source src={Live} type="video/mp4" />
+        </video>
 
-       <footer className="w-full bg-[#0a0a0a] text-gray-300 py-[3vmax] mt-[3vmax] overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute top-1/2 left-1/2 w-auto object-contain transform -translate-x-1/2 -translate-y-1/2 -rotate-90"
+          style={{
+            objectFit: "contain",
+            transformOrigin: "center",
+            WebkitMaskImage:
+              "radial-gradient(circle at center, black 80%, transparent 95%)",
+            maskImage:
+              "radial-gradient(circle at center, black 80%, transparent 95%)",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskSize: "100% 100%",
+            maskSize: "100% 100%",
+          }}
+        >
+          <source src={Live} type="video/mp4" />
+        </video>
+
+        <h1
+          className=" text-white items-center z-10"
+          style={{
+            fontFamily: "Racing Sans One",
+     
+            textShadow: `
+                0 0 10px rgba(255,255,255,0.8),
+                0 0 20px rgba(255,255,255,0.6),
+                0 0 30px rgba(255,255,255,0.4)
+              `,
+          }}
+        >
+          Live the Game
+        </h1>
+      </div>
+
+      <footer className="w-full bg-[#0a0a0a] text-gray-300 py-[3vmax]  overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between px-[3vmax] gap-10">
           {/* Left */}
           <div className="space-y-3">
             <h1 className="text-2xl font-semibold text-white">Footurf</h1>
             <p className="text-sm text-gray-400 max-w-sm">
-              Find, book, and play at the best turfs near you.  
-              Experience hassle-free booking and verified listings.
+              Find, book, and play at the best turfs near you. Experience
+              hassle-free booking and verified listings.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h2 className="text-lg font-semibold text-white mb-2">Quick Links</h2>
+            <h2 className="text-lg font-semibold text-white mb-2">
+              Quick Links
+            </h2>
             <ul className="space-y-1 text-gray-400">
               <li className="hover:text-[#b4e716] cursor-pointer">Home</li>
               <li className="hover:text-[#b4e716] cursor-pointer">About</li>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import IMG from "../assets/back.jpg";
 
 const Signup = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -27,11 +28,13 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600"
+     style={{ backgroundImage: `url(${IMG})`, backgroundSize: "cover" }}>
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md"
+       
       >
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           {isSignUp ? "Create an Account" : "Welcome Back"}

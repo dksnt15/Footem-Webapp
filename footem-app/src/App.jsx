@@ -21,11 +21,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/signup" element={<Signup/>}/>
-            <Route path="/Details" element={<TurfDetails/>}/>
+            <Route path="/turf/:id" element={<TurfDetails/>}/>
             <Route path="/bookingform" element={<BookingForm/>}/>
             <Route path="/mybookings" element={<MyBookings/>}/>
-            <Route path="/Dashboard" element={<Dashboard/>}/>
-            <Route path="/Turfs" element={<Turf/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/turfs" element={<Turf/>}/>
     
           </Routes> 
         </Router>

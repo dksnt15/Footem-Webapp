@@ -58,7 +58,7 @@ const Navbar = () => {
            
 
             <div className="flex items-center border-1 text-[0.8em] lg:text-[1vmax] font-semibold text-white hover:text-[#b4e716] px-4 py-1 rounded-full cursor-pointer">
-              <Link to="/signup">SignUp</Link>
+              <Link className="" to="/signup">SignUp</Link>
             </div>
             <button
               className=" sm:hidden text-white z-50 "
