@@ -7,8 +7,8 @@ const Card = ({ turf, onClick }) => {
         onClick={onClick}
         className=" w-[400px] m-[2vmax] flex flex-col bg-gray-200 justify-content items-center h-[300px] shadow-2xl rounded-2xl cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
       >
-        <div className="w-full h-[65%] bg-gray-300 rounded-t-2xl shadow-inner ">
-          <img src="" alt="" />
+        <div className="w-full h-[65%] object-cover overflow-hidden bg-gray-300 rounded-t-2xl shadow-inner ">
+          <img src={turf.image} alt="" />
         </div>
         <div className=" p-[1.5vmax] flex justify-center gap-[5vmax] w-full">
           <div className="w-1/2">

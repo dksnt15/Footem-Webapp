@@ -5,14 +5,16 @@ import HeroImg from "../assets/Heroimg.jpg";
 import HeroVid from "../assets/HeroVid.mp4";
 import Card from "../Components/Card";
 import Live from "../assets/Live.webm";
-import img1 from "../assets/img1.jpeg";
-import img2 from "../assets/img2.jpeg";
+ 
 import {
   FaFacebookF,
   FaInstagram,
   FaTwitter,
   FaLinkedinIn,
 } from "react-icons/fa";
+
+import turfdata from "../data/turf";
+
 const Home = () => {
   const navigate= useNavigate();
   const [index, setIndex] = useState(0);
@@ -64,15 +66,10 @@ const Home = () => {
       author: "Neha",
     },
   ];
-  const turfs = [
-    { id: 1, name: "Green Park Turf", location: "Delhi" },
-    { id: 2, name: "City Arena", location: "Mumbai" },
-    { id: 3, name: "Goal Hub Turf", location: "Bangalore" },
-    { id: 4, name: "Soccer Zone", location: "Pune" },
-  ];
+   
 
   return (
-    <div className="min-h-screen w-screen bg-gradient-to-r from-[#ffffff] to-[#D4DFED]">
+    <div className="min-h-screen w-full bg-gradient-to-r from-[#ffffff] to-[#D4DFED]">
       <div className="relative h-[99vh] w-full bg-center bg-cover bg-no-repeat">
         <video
           autoPlay
@@ -84,15 +81,18 @@ const Home = () => {
         </video>
         <div className="absolute inset-0 bg-black/20 w-full h-full"></div>
         <div
-          className="w-full lg:w-[60%] px-[8vmax] lg:px-0 py-[8vmax] h-full flex flex-col justify-center items-center text-white leading-none drop-shadow-2xl"
+          className="w-full  h-[70%] sm:h-[60%] p-[8vmin] flex flex-col justify-center items-center text-white leading-none drop-shadow-2xl "
           style={{ fontFamily: "Racing Sans One" }}
         >
-          <h1 className=" text-[12vmax] md:text-[120px] sm:leading-[12vmin]">
-            YOUR <span className="text-[#b4e716]">FIELD</span>
+          <h1 className="flex flex-wrap justify-center text-[14vmax] md:text-[140px] leading-[9vmax] md:leading-[4vmax]  mb-[20px] sm:mb-0">
+            YOUR <span className="text-[#b4e716] z-5">FIELD</span>
           </h1>
-          <h2 className=" pl-[8vmax] text-[12vmax] md:text-[120px] sm:leading-[12vmin]">
-            YOUR GAME
+          <h2 className="flex flex-wrap justify-center pl-[4vmax] md:pl-[0px] text-[14vmax] md:text-[120px] leading-[9vmax] md:leading-[3vmax]">
+            <span className="sm:text-[#b4e716] z-5">YOUR</span> GAME
           </h2>
+        </div>
+        <div className="">
+           
         </div>
       </div>
 
@@ -104,9 +104,9 @@ const Home = () => {
           Featured Turfs
         </h1>
           <div className="flex w-full h-[23em] md:h-[25em] overflow-x-auto [scrollbar-width:none]   ">
-           {turfs.map((turf)=>(
+           {turfdata.map((turf)=>(
             <Card 
-             key ={turf.id}
+             key ={turf.id} 
              turf={turf}
              onClick={()=> navigate(`/turf/${turf.id}`)}
            />))}
@@ -232,7 +232,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="relative w-full h-[30vmax] md:h-[25vmax] flex justify-center items-center text-7xl overflow-hidden">
+      <div className="relative w-full h-[30vmax] md:h-[20vmax] flex justify-center items-center text-7xl overflow-hidden">
         
 
         <video
