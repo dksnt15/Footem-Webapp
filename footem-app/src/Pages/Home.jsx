@@ -115,7 +115,7 @@ const Home = () => {
         </div>
 
       <div className="w-full flex justify-center ">
-        <div className="bg-[#1c4b41] w-full -mt-5 h-full  md:h-[400px] rounded-2xl shadow-inner p-[1vmax]  overflow-hidden z-10 ">
+        <div className="bg-[#1c4b41] w-full -mt-5 h-full  md:h-[400px] rounded-xl shadow-inner p-[1vmax]  overflow-hidden z-10 ">
           <h1
             className="text-white font-semibold sm:text-4xl p-[0.5vmax]"
             style={{ fontFamily: "Poppins" }}
