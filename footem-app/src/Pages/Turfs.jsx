@@ -4,18 +4,28 @@ import turfdata from "../data/turf";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 const Turfs = () => {
   const navigate = useNavigate();
   const turfs = [{}];
   const [showFilters, setShowFilters] = useState(false);
   const [selectedSports, setSelectedSports] = useState([]);
+  const [maxprice, setMaxprice]= useState(3000);
 
   const handleSportChange=(sport)=>{
     setSelectedSports((prev)=>
     prev.includes(sport)?prev.filter((s)=>s!==sport):[...prev,sport]);
-    console.log(selectedSports)
 
   };
+  const handlePriceChange=(e)=>{
+   setMaxprice(e.target.value);
+  }
+
+  const filteredTurfs= turfdata.filter((turf)=>{
+    const matchesSport=selectedSports.length===0 || selectedSports.includes(turf.sport);
+    const matchesPrice=turf.price<=maxprice;
+    return matchesSport && matchesPrice;
+  });
 
   return (
     <div className="relative w-full min-h-screen  ">
@@ -83,14 +93,22 @@ const Turfs = () => {
 
                   <div className="rounded-xl p-[1vmin] shadow-xl">
                     <label for="price-range">Price Range</label>
-                    <div className="h-2 bg-gray-700 rounded-full mb-3 ">
-                      <div className="h-full bg-green-500 rounded-full w-3/4"></div>
-                    </div>
+                   
+                   <input
+                    type="range"
+                    min="500"
+                    max="5000"
+                    step="500"
+                    value={maxprice}
+                    onChange={handlePriceChange}
+                    className="w-full accent-green-500 cursor-pointer"/>
+
                     <div className="text-sm text-gray-400">
-                      $<span id="min-price">1000</span> - $
-                      <span id="max-price">2500</span> per hour
+                      $<span id="min-price">500</span> - $
+                      <span id="max-price">{maxprice}</span> per hour
                     </div>
                   </div>
+
                   <button
                     id="apply-filters-btn"
                     class="w-full mt-6 py-3 bg-green-600 text-white font-bold rounded-lg shadow-lg 
@@ -103,14 +121,17 @@ const Turfs = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="h-full w-full md:w-[75%] rounded-2xl border-2  border-blue-500 flex flex-wrap">
-          {turfdata.map((turf) => (
+
+        <div className="h-full w-full md:w-[75%] rounded-2xl  shadow-2xl flex  flex-wrap">
+          {filteredTurfs.length>0?(filteredTurfs.map((turf) => (
             <Card
               key={turf.id}
               turf={turf}
               onClick={() => navigate(`/turf/${turf.id}`)}
             />
-          ))}
+          ))) : (  <p className="text-gray-500 w-full h-full mt-2 flex justify-center items-center text-center">
+              No turfs match your filters 😢
+            </p>)}
         </div>
       </div>
     </div>
