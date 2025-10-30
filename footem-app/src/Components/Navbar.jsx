@@ -64,7 +64,7 @@ const Navbar = () => {
             </ul>
 
             <ul
-              className={`fixed md:hidden w-1/2 flex flex-col top-0 right-0  h-full text-white bg-black/80 backdrop-blur-sm p-4 transform transition-all duration-300 ease-in-out ${
+              className={`fixed md:hidden w-1/2 flex flex-col top-0 right-0  h-full text-white bg-black/80 backdrop-blur-sm p-4 transform transition-all duration-300 ease-in-out z-10 ${
                 open
                   ? "translate-x-0 opacity-100"
                   : "translate-x-full opacity-0"

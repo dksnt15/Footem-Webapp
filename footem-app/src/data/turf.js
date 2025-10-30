@@ -5,6 +5,7 @@ const turfdata=[
     location: "Mumbai, India",
     rating: 4.5,
     price: 1500,
+    sport: "football",
     image:
       "https://media.istockphoto.com/id/983979694/photo/corner-line-of-an-indoor-football-soccer-training-field.jpg?s=612x612&w=0&k=20&c=1LljSla_DxIqNulQtAap1OAndN9KGD_gb67SZy4sh8A=",
   },
@@ -14,6 +15,7 @@ const turfdata=[
     location: "Pune, India",
     rating: 4.7,
     price: 1000,
+    sport: "cricket",
     image:
       "https://media.istockphoto.com/id/1157915878/photo/public-football-field-small-futsal-ball-field-in-the-gym-indoor-soccer-sport-field-outdoor.jpg?s=612x612&w=0&k=20&c=LJ9R9t3kA5YdDDc5KQxey7XybmfkqHVppngVJuH8yTA=",
   },
@@ -23,6 +25,7 @@ const turfdata=[
     location: "Delhi, India",
     rating: 4.2,
     price: 2500,
+    sport: "football",
     image:
       "https://media.istockphoto.com/id/983979694/photo/corner-line-of-an-indoor-football-soccer-training-field.jpg?s=612x612&w=0&k=20&c=1LljSla_DxIqNulQtAap1OAndN9KGD_gb67SZy4sh8A=",
   },
