@@ -7,7 +7,7 @@ const Navbar = () => {
   const location = useLocation();
   return (
     <div className="relative ">
-      <nav className={` w-full h-[4em] lg:h-[5.5em] z-50 ${location.pathname === "/" ? "absolute top-0 left-0 " : "bg-[#0a0a0a] sticky top-0 shadow-2xl"}`}>
+      <nav className={` w-full h-[4em] lg:h-[5.5em] z-50 ${location.pathname === "/" ? "absolute top-0 left-0 " : "bg-[#0a0a0a]   top-0 left-0 shadow-2xl"}`}>
         <div className="flex justify-between ">
           <div>
             <h1
@@ -64,7 +64,7 @@ const Navbar = () => {
             </ul>
 
             <ul
-              className={`fixed md:hidden w-1/2 flex flex-col top-0 right-0  h-full text-white bg-black/80 backdrop-blur-sm p-4 transform transition-all duration-300 ease-in-out ${
+              className={`fixed md:hidden w-1/2 flex flex-col top-0 right-0  h-full text-white bg-black/80 backdrop-blur-sm p-4 transform transition-all duration-300 ease-in-out z-10 ${
                 open
                   ? "translate-x-0 opacity-100"
                   : "translate-x-full opacity-0"

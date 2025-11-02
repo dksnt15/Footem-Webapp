@@ -5,7 +5,7 @@ const Card = ({ turf, onClick }) => {
     <div className="">
       <div
         onClick={onClick}
-        className=" w-[400px] m-[2vmax] flex flex-col bg-gray-200 justify-content items-center h-[300px] shadow-2xl rounded-2xl cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
+        className="  sm:w-[280px] md:w-[320px] lg:w-[380px] m-[2vmax] flex flex-col bg-gray-200 justify-content items-center h-[300px] shadow-2xl rounded-2xl cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
       >
         <div className="w-full h-[65%] object-cover overflow-hidden bg-gray-300 rounded-t-2xl shadow-inner ">
           <img src={turf.image} alt="" />
@@ -17,7 +17,7 @@ const Card = ({ turf, onClick }) => {
           </div>
 
           <h1 className="w-1/2 text-bold text-center text-[1.125rem]">
-            Rs 1500
+             ₹{turf.price}
           </h1>
         </div>
       </div>
