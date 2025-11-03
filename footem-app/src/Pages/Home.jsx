@@ -108,7 +108,7 @@ const Home = () => {
             <Card 
              key ={turf.id} 
              turf={turf}
-             onClick={()=> navigate(`/turf/${turf.id}`)}
+             onClick={()=> navigate(`/turf/${turf.id}`, {state: {turf}})}
            />))}
 
           </div>
@@ -187,7 +187,7 @@ const Home = () => {
             />
 
             <div className=" md:w-1/2 h-full p-[1vmax] text-white space-y-[1vmax]">
-              <div className="w-full h-full flex flex-col  sm:space-y-3 ">
+              <div className="w-full h-full flex flex-col sm:space-y-3 ">
                 <div className="w-full h-full flex sm:flex-col justify-end gap-3 sm:gap-0">
                   <img
                     className="rounded-full w-[50px] h-[50px] border-1 -ml-[5px]"

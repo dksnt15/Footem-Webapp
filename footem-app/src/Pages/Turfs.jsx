@@ -29,7 +29,7 @@ const Turfs = () => {
   const handleLocationChange = (e) => {
     setLocationFilter(e.target.value);
   };
-
+       
   const handleSportChange = (sport) => {
     setSelectedSports((prev) =>
       prev.includes(sport) ? prev.filter((s) => s !== sport) : [...prev, sport]
@@ -157,7 +157,7 @@ const Turfs = () => {
               <Card
                 key={turf.id}
                 turf={turf}
-                onClick={() => navigate(`/turf/${turf.id}`)}
+                onClick={() => navigate(`/turf/${turf.id}`,{state: {turf}})}
               />
             ))
           ) : (
