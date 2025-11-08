@@ -1,11 +1,11 @@
 import React from "react";
 
-const Card = ({ turf, onClick }) => {
+const Card = ({ turf, onClick,className }) => {
   return (
     <div className="">
       <div
         onClick={onClick}
-        className="  w-[280px] md:w-[320px] lg:w-[380px] m-[2vmax] flex flex-col bg-gray-200 justify-content items-center h-[300px] shadow-2xl rounded-2xl cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
+        className={`${className} md:w-[360px] m-[2vmax] flex flex-col bg-gray-200 justify-content items-center h-[300px] shadow-2xl rounded-2xl cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out`}
       >
         <div className="w-full h-[65%] object-cover overflow-hidden bg-gray-300 rounded-t-2xl shadow-inner ">
           <img src={turf.image} alt="" />

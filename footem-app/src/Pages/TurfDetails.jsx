@@ -125,7 +125,7 @@ export default function TurfDetails() {
                 </p>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  <di v className="flex items-center gap-3 p-3 border rounded-lg">
+                  <div className="flex items-center gap-3 p-3 border rounded-lg">
                     <CheckCircle size={22} />
                     <div>
                       <div className="text-sm font-medium">Rating</div>
@@ -133,7 +133,7 @@ export default function TurfDetails() {
                         {turf.rating} / 5
                       </div>
                     </div>
-                  </di>
+                  </div>
 
                   <div className="flex items-center gap-3 p-3 border rounded-lg">
                     <CalendarIcon size={22} />
@@ -157,22 +157,7 @@ export default function TurfDetails() {
             </div>
           </div>
 
-          {/* Amenities 
-          <div className="mt-6 bg-white rounded-2xl p-6 shadow">
-            <h3 className="text-lg font-semibold mb-3">Amenities</h3>
-            <div className="flex flex-wrap gap-3">
-              {turf.amenities.map((a) => (
-                <motion.div
-                  key={a}
-                  whileHover={{ scale: 1.03 }}
-                  className="px-3 py-2 border rounded-full text-sm"
-                >
-                  {a}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          */}
+        
         </div>
 
         {/* Right: Booking panel */}
@@ -189,7 +174,7 @@ export default function TurfDetails() {
             </div>
             <div className="text-right">
               <div className="text-sm text-gray-600">
-                ₹{turf.pricePerHour}/hr
+                ₹{turf.price}/hr
               </div>
             </div>
           </div>
@@ -253,7 +238,7 @@ export default function TurfDetails() {
             <button
               onClick={() => setShowBookingModal(true)}
               disabled={!selectedSlotId}
-              className={`w-full py-3 rounded-lg font-semibold ${
+              className={`w-full py-3 rounded-lg active:scale-95 transition-all duration-300 ${selectedSlotId?"cursor-pointer":""} font-semibold ${
                 selectedSlotId
                   ? "bg-indigo-600 text-white shadow-lg"
                   : "bg-gray-200 text-gray-600 cursor-not-allowed"
@@ -266,7 +251,7 @@ export default function TurfDetails() {
               onClick={() =>
                 alert("Open directions in maps - replace with actual link")
               }
-              className="mt-3 w-full py-2 rounded-lg border"
+              className="mt-3 w-full py-2 rounded-lg border active:scale-95 transition-all duration-300 cursor-pointer"
             >
               Get Directions
             </button>
@@ -300,7 +285,7 @@ export default function TurfDetails() {
               transition={{ duration: 0.18 }}
               className="relative bg-white rounded-2xl p-6 w-full max-w-md shadow-lg"
             >
-              <h3 className="text-lg font-bold mb-2">Confirm reservation</h3>
+              <h3 className="text-lg font-bold mb-2 active:scale-95 transition-all duration-300">Confirm reservation</h3>
               <p className="text-sm text-gray-600 mb-4">
                 You're booking{" "}
                 <span className="font-medium">
@@ -316,13 +301,13 @@ export default function TurfDetails() {
               <div className="flex gap-3">
                 <button
                   onClick={bookSelectedSlot}
-                  className="flex-1 py-2 rounded-lg bg-indigo-600 text-white font-semibold"
+                  className="flex-1 py-2 rounded-lg bg-indigo-600 text-white font-semibold active:scale-95 transition-all duration-300 cursor-pointer"
                 >
                   Pay & confirm
                 </button>
                 <button
                   onClick={() => setShowBookingModal(false)}
-                  className="flex-1 py-2 rounded-lg border"
+                  className="flex-1 py-2 rounded-lg border active:scale-95 transition-all duration-300 cursor-pointer"
                 >
                   Cancel
                 </button>

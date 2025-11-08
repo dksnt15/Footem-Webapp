@@ -109,6 +109,7 @@ const Home = () => {
              key ={turf.id} 
              turf={turf}
              onClick={()=> navigate(`/turf/${turf.id}`, {state: {turf}})}
+             className="w-[300px]"
            />))}
 
           </div>
@@ -232,7 +233,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="relative w-full h-[30vmax] md:h-[20vmax] flex justify-center items-center text-7xl overflow-hidden">
+      <div className="relative w-full h-[30vmax] md:h-[20vmax] flex justify-center items-center text-5xl sm:text-7xl overflow-hidden">
         
 
         <video
