@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Card from "../Components/Card";
 import turfdata from "../data/turf";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-react";
 import NoDatagif from "../assets/Nodatagif.json";
+import { TurfContext } from "../context/TurfContext";
 
 const Turfs = () => {
   const navigate = useNavigate();
+
+  const { handleSelectedTurf } = useContext(TurfContext);
+
   const [showFilters, setShowFilters] = useState(false);
   const [selectedSports, setSelectedSports] = useState([]);
   const [maxprice, setMaxprice] = useState(3000);
@@ -29,7 +33,7 @@ const Turfs = () => {
   const handleLocationChange = (e) => {
     setLocationFilter(e.target.value);
   };
-       
+
   const handleSportChange = (sport) => {
     setSelectedSports((prev) =>
       prev.includes(sport) ? prev.filter((s) => s !== sport) : [...prev, sport]
@@ -44,7 +48,9 @@ const Turfs = () => {
       appliedFilters.sports.length === 0 ||
       appliedFilters.sports.includes(turf.sport);
     const matchesPrice = turf.price <= appliedFilters.price;
-    const matchesLocation = turf.location.toLowerCase().includes(appliedFilters.location.toLowerCase());
+    const matchesLocation = turf.location
+      .toLowerCase()
+      .includes(appliedFilters.location.toLowerCase());
     return matchesSport && matchesPrice && matchesLocation;
   });
 
@@ -157,7 +163,9 @@ const Turfs = () => {
               <Card
                 key={turf.id}
                 turf={turf}
-                onClick={() => navigate(`/turf/${turf.id}`,{state: {turf}})}
+                onClick={() => (
+                  handleSelectedTurf(turf), navigate(`/turf/${turf.id}`)
+                )}
               />
             ))
           ) : (

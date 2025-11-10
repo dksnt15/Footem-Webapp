@@ -1,88 +1,84 @@
-import  { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { TurfContext } from "../context/TurfContext";
+import { BookingContext } from "../context/BookingContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar } from "react-calendar"; // optional: can replace with any calendar
-import {
-  Calendar as CalendarIcon,
-  MapPin,
-  CheckCircle,
-  XCircle,
-} from "lucide-react";
+import { Calendar } from "react-calendar";
+import { Calendar as CalendarIcon, MapPin, CheckCircle } from "lucide-react";
 import Backimg from "../assets/Heroimg.jpg";
- 
- 
- 
 
 export default function TurfDetails() {
-  // Mock turf data - replace with props or API calls as needed
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { turf } = location.state || {};
-
-  if(!turf){
-    navigate('/turfs');
-    return null;
-  }
- 
-
   // Mock availability for a selected date. Each slot has time, duration, status
   const initialSlots = [
-    { id: "s1", time: "06:00 - 07:00", available: true },
-    { id: "s2", time: "07:00 - 08:00", available: false },
-    { id: "s3", time: "08:00 - 09:00", available: true },
-    { id: "s4", time: "09:00 - 10:00", available: true },
-    { id: "s5", time: "10:00 - 11:00", available: false },
-    { id: "s6", time: "17:00 - 18:00", available: true },
-    { id: "s7", time: "19:00 - 20:00", available: true },
+    { id: "s1", time: "06:00AM - 07:00AM", available: true },
+    { id: "s2", time: "07:00AM - 08:00AM", available: false },
+    { id: "s3", time: "08:00AM - 09:00AM", available: true },
+    { id: "s4", time: "09:00AM - 10:00AM", available: true },
+    { id: "s5", time: "10:00AM - 11:00AM", available: false },
+    { id: "s6", time: "05:00PM - 06:00PM", available: true },
+    { id: "s7", time: "07:00PM - 08:00PM", available: true },
   ];
 
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [calendarDate, setCalendarDate] = useState(new Date());
+  const navigate = useNavigate();
+  const { selectedTurf } = useContext(TurfContext);
+  const { selectedDate, setSelectedDate, selectedSlot, setSelectedSlot } =
+    useContext(BookingContext);
+
   const [slots, setSlots] = useState(initialSlots);
-  const [selectedSlotId, setSelectedSlotId] = useState(null);
   const [showBookingModal, setShowBookingModal] = useState(false);
+
+  if (!selectedTurf) {
+    navigate("/turfs");
+    return null;
+  }
 
   const selectSlot = (slot) => {
     if (!slot.available) return; // blocked
-    setSelectedSlotId(slot.id === selectedSlotId ? null : slot.id);
+    setSelectedSlot(slot.id === selectedSlot ? null : slot.id);
   };
 
   const bookSelectedSlot = () => {
-    if (!selectedSlotId) return;
+    if (!selectedSlot) return;
     setSlots((prev) =>
-      prev.map((s) =>
-        s.id === selectedSlotId ? { ...s, available: false } : s
-      )
+      prev.map((s) => (s.id === selectedSlot ? { ...s, available: false } : s))
     );
     setShowBookingModal(false);
-    setSelectedSlotId(null);
+    setSelectedSlot(null);
     // In a real app: call API to reserve slot and handle errors / race conditions
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 sm:p-6 md:p-12"
-    style={{backgroundImage: `url(${turf.image})`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}}>
+    <div
+      className="min-h-screen bg-gradient-to-b from-white to-gray-50 sm:p-6 md:p-12"
+      style={{
+        backgroundImage: `url(${selectedTurf.image})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left: Images */}
         <div className="lg:col-span-2 ">
           <div className="rounded-2xl sm:overflow-hidden shadow-lg ">
             <div className="relative">
               <img
-                src={turf.image}
-                alt={`${turf.name}`}
+                src={selectedTurf.image}
+                alt={`${selectedTurf.name}`}
                 className="w-full h-72 md:h-96 object-cover"
               />
 
               {/* floating info badge */}
               <div className="absolute left-4 top-4 bg-white/80 backdrop-blur rounded-xl px-4 py-2 flex items-center gap-3">
                 <div className="text-sm">
-                  <div className="text-lg font-semibold">{turf.name}</div>
+                  <div className="text-lg font-semibold">
+                    {selectedTurf.name}
+                  </div>
                   <div className="text-xs text-gray-600 flex items-center gap-2">
-                    <MapPin size={14} /> {turf.location}
+                    <MapPin size={14} /> {selectedTurf.location}
                   </div>
                 </div>
                 <div className="ml-auto text-sm font-medium">
-                  ₹{turf.price}/hr
+                  ₹{selectedTurf.price}/hr
                 </div>
               </div>
 
@@ -130,7 +126,7 @@ export default function TurfDetails() {
                     <div>
                       <div className="text-sm font-medium">Rating</div>
                       <div className="text-xs text-gray-600">
-                        {turf.rating} / 5
+                        {selectedTurf.rating} / 5
                       </div>
                     </div>
                   </div>
@@ -156,8 +152,6 @@ export default function TurfDetails() {
               </motion.div>
             </div>
           </div>
-
-        
         </div>
 
         {/* Right: Booking panel */}
@@ -168,13 +162,13 @@ export default function TurfDetails() {
               <div className="text-sm text-gray-600">
                 Selected date:{" "}
                 <span className="font-medium">
-                  {calendarDate.toDateString()}
+                  {selectedDate.toDateString()}
                 </span>
               </div>
             </div>
             <div className="text-right">
               <div className="text-sm text-gray-600">
-                ₹{turf.price}/hr
+                ₹{selectedTurf.price}/hr
               </div>
             </div>
           </div>
@@ -183,8 +177,8 @@ export default function TurfDetails() {
             {/* lightweight calendar - swap as needed */}
             <div className="border rounded-lg p-2">
               <Calendar
-                value={calendarDate}
-                onChange={(d) => setCalendarDate(d)}
+                value={selectedDate}
+                onChange={(d) => setSelectedDate(d)}
               />
             </div>
           </div>
@@ -202,7 +196,7 @@ export default function TurfDetails() {
                       ? "cursor-pointer hover:shadow-lg"
                       : "opacity-60 cursor-not-allowed"
                   } ${
-                    selectedSlotId === slot.id
+                    selectedSlot === slot.id
                       ? "ring-2 ring-indigo-400 bg-indigo-50"
                       : "bg-white"
                   }`}
@@ -237,9 +231,11 @@ export default function TurfDetails() {
           <div className="mt-6">
             <button
               onClick={() => setShowBookingModal(true)}
-              disabled={!selectedSlotId}
-              className={`w-full py-3 rounded-lg active:scale-95 transition-all duration-300 ${selectedSlotId?"cursor-pointer":""} font-semibold ${
-                selectedSlotId
+              disabled={!selectedSlot}
+              className={`w-full py-3 rounded-lg active:scale-95 transition-all duration-300 ${
+                selectedSlot ? "cursor-pointer" : ""
+              } font-semibold ${
+                selectedSlot
                   ? "bg-indigo-600 text-white shadow-lg"
                   : "bg-gray-200 text-gray-600 cursor-not-allowed"
               }`}
@@ -285,7 +281,9 @@ export default function TurfDetails() {
               transition={{ duration: 0.18 }}
               className="relative bg-white rounded-2xl p-6 w-full max-w-md shadow-lg"
             >
-              <h3 className="text-lg font-bold mb-2 active:scale-95 transition-all duration-300">Confirm reservation</h3>
+              <h3 className="text-lg font-bold mb-2 active:scale-95 transition-all duration-300">
+                Confirm reservation
+              </h3>
               <p className="text-sm text-gray-600 mb-4">
                 You're booking{" "}
                 <span className="font-medium">
@@ -293,7 +291,7 @@ export default function TurfDetails() {
                 </span>{" "}
                 on{" "}
                 <span className="font-medium">
-                  {calendarDate.toDateString()}
+                  {selectedDate.toDateString()}
                 </span>
                 .
               </p>
