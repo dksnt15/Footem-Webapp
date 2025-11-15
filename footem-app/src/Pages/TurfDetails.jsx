@@ -21,10 +21,12 @@ export default function TurfDetails() {
 
   const navigate = useNavigate();
   const { selectedTurf } = useContext(TurfContext);
-  const { selectedDate, setSelectedDate, selectedSlot, setSelectedSlot } =
-    useContext(BookingContext);
+  const { confirmBooking, allBookings } = useContext(BookingContext);
 
   const [slots, setSlots] = useState(initialSlots);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedSlotId, setselectedSlotId] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState([]);
   const [showBookingModal, setShowBookingModal] = useState(false);
 
   if (!selectedTurf) {
@@ -34,16 +36,26 @@ export default function TurfDetails() {
 
   const selectSlot = (slot) => {
     if (!slot.available) return; // blocked
-    setSelectedSlot(slot.id === selectedSlot ? null : slot.id);
+    setselectedSlotId(slot.id === selectedSlotId ? null : slot.id);
   };
 
-  const bookSelectedSlot = () => {
-    if (!selectedSlot) return;
+  const bookselectedSlotId = () => {
+    if (!selectedSlotId) return;
     setSlots((prev) =>
-      prev.map((s) => (s.id === selectedSlot ? { ...s, available: false } : s))
+      prev.map((s) =>
+        s.id === selectedSlotId ? { ...s, available: false } : s
+      )
     );
+    const selectedSlot = slots.find((s) => s.id === selectedSlotId);
+
+    confirmBooking({
+      turf: selectedTurf,
+      date: selectedDate,
+      slot: selectedSlot,
+    });
     setShowBookingModal(false);
-    setSelectedSlot(null);
+    setselectedSlotId(null);
+
     // In a real app: call API to reserve slot and handle errors / race conditions
   };
 
@@ -196,7 +208,7 @@ export default function TurfDetails() {
                       ? "cursor-pointer hover:shadow-lg"
                       : "opacity-60 cursor-not-allowed"
                   } ${
-                    selectedSlot === slot.id
+                    selectedSlotId === slot.id
                       ? "ring-2 ring-indigo-400 bg-indigo-50"
                       : "bg-white"
                   }`}
@@ -231,11 +243,11 @@ export default function TurfDetails() {
           <div className="mt-6">
             <button
               onClick={() => setShowBookingModal(true)}
-              disabled={!selectedSlot}
+              disabled={!selectedSlotId}
               className={`w-full py-3 rounded-lg active:scale-95 transition-all duration-300 ${
-                selectedSlot ? "cursor-pointer" : ""
+                selectedSlotId ? "cursor-pointer" : ""
               } font-semibold ${
-                selectedSlot
+                selectedSlotId
                   ? "bg-indigo-600 text-white shadow-lg"
                   : "bg-gray-200 text-gray-600 cursor-not-allowed"
               }`}
@@ -298,7 +310,7 @@ export default function TurfDetails() {
 
               <div className="flex gap-3">
                 <button
-                  onClick={bookSelectedSlot}
+                  onClick={bookselectedSlotId}
                   className="flex-1 py-2 rounded-lg bg-indigo-600 text-white font-semibold active:scale-95 transition-all duration-300 cursor-pointer"
                 >
                   Pay & confirm

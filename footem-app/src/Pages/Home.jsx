@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { TurfContext } from "../context/TurfContext";
 import HeroImg from "../assets/Heroimg.jpg";
 
 import HeroVid from "../assets/HeroVid.mp4";
 import Card from "../Components/Card";
 import Live from "../assets/Live.webm";
- 
+
 import {
   FaFacebookF,
   FaInstagram,
@@ -16,7 +17,8 @@ import {
 import turfdata from "../data/turf";
 
 const Home = () => {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
+  const { handleSelectedTurf } = useContext(TurfContext);
   const [index, setIndex] = useState(0);
   const startX = useRef(0);
   const endX = useRef(0);
@@ -66,7 +68,6 @@ const Home = () => {
       author: "Neha",
     },
   ];
-   
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-r from-[#ffffff] to-[#D4DFED]">
@@ -91,9 +92,7 @@ const Home = () => {
             <span className="sm:text-[#b4e716] z-5">YOUR</span> GAME
           </h2>
         </div>
-        <div className="">
-           
-        </div>
+        <div className=""></div>
       </div>
 
       <div className=" ">
@@ -103,17 +102,19 @@ const Home = () => {
         >
           Featured Turfs
         </h1>
-          <div className="flex w-full h-[23em] md:h-[25em] overflow-x-auto [scrollbar-width:none]   ">
-           {turfdata.map((turf)=>(
-            <Card 
-             key ={turf.id} 
-             turf={turf}
-             onClick={()=> navigate(`/turf/${turf.id}`, {state: {turf}})}
-             className="w-[300px]"
-           />))}
-
-          </div>
+        <div className="flex w-full h-[23em] md:h-[25em] overflow-x-auto [scrollbar-width:none]   ">
+          {turfdata.map((turf) => (
+            <Card
+              key={turf.id}
+              turf={turf} 
+              onClick={() => (
+                handleSelectedTurf(turf), navigate(`/turf/${turf.id}`)
+              )}
+              className="w-[300px]"
+            />
+          ))}
         </div>
+      </div>
 
       <div className="w-full flex justify-center ">
         <div className="bg-[#1c4b41] w-full -mt-5 h-full  md:h-[400px] rounded-xl shadow-inner p-[1vmax]  overflow-hidden z-10 ">
@@ -234,8 +235,6 @@ const Home = () => {
       </div>
 
       <div className="relative w-full h-[30vmax] md:h-[20vmax] flex justify-center items-center text-5xl sm:text-7xl overflow-hidden">
-        
-
         <video
           autoPlay
           muted
@@ -261,7 +260,7 @@ const Home = () => {
           className=" text-white items-center z-10"
           style={{
             fontFamily: "Racing Sans One",
-     
+
             textShadow: `
                 0 0 10px rgba(255,255,255,0.8),
                 0 0 20px rgba(255,255,255,0.6),
